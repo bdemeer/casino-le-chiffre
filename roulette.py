@@ -67,7 +67,7 @@ def kleur_van(nummer):
         raise ValueError("Dit vakje bestaat niet op een Europees wiel: " + str(nummer))
     if nummer == 0:
         return "groen"
-    if nummer in ROOD:
+    if nummer in GEEL:
         return "rood"
     return "zwart"
 
