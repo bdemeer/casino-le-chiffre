@@ -15,6 +15,28 @@ from roulette import (
     simuleer,
 )
 
+# ------------------------------------------------------------------
+# Eigen tests
+# ------------------------------------------------------------------
+
+def test_hoog_wint_op_19_en_36_verliest_op_18_en_0():
+    assert bereken_uitbetaling("hoog", None, 10, 19) == 20
+    assert bereken_uitbetaling("hoog", None, 10, 36) == 20
+    assert bereken_uitbetaling("hoog", None, 10, 18) == 0
+    assert bereken_uitbetaling("hoog", None, 10, 0) == 0
+
+
+def test_derde_dozijn_betaalt_3_keer_de_inzet():
+    assert bereken_uitbetaling("dozijn3", None, 10, 25) == 30
+    assert bereken_uitbetaling("dozijn3", None, 10, 36) == 30
+    assert bereken_uitbetaling("dozijn3", None, 10, 24) == 0
+
+
+def test_saldo_na_gewonnen_ronde_op_nummer():
+    uitbetaling = bereken_uitbetaling("nummer", 17, 10, 17)
+    assert uitbetaling == 360
+    assert nieuw_saldo(100, 10, uitbetaling) == 450
+
 
 # ------------------------------------------------------------------
 # euro_naar_fiches
